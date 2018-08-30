@@ -1,0 +1,4 @@
+#!/bin/bash
+
+scannername="changme"
+EmailGateway="changeme"
