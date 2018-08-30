@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. raspguard.config
+. /home/raspguard/RaspGuard/raspguard.config
 
 while true
 do
@@ -23,7 +23,7 @@ do
 					grep "FOUND" /home/raspguard/log >> /home/raspguard/infectedlog
 					while read  EmailAlert; do
 						swaks --to $EmailAlert --from "Raspguard@cert.lu" --server $EmailGateway --header "Subject: Please create a security incident" --body /home/raspguard/infectedlog
-					done < raspguard-email-alert
+					done < /home/raspguard/RaspGuard/raspguard-email-alert
 				else
         				zenity --info --text="The USB Stick is Clean" --display=:0.0 &
 				fi
@@ -39,7 +39,7 @@ do
                                 systemctl status clamav-freshclam.service >> /home/raspguard/cleanlog
 				while read Email; do
 					swaks --to $Email --from "Raspguard@cert.lu" --server $EmailGateway --header "Subject:Provider: $companyname" --body /home/raspguard/cleanlog
-				done < raspguard-email-info
+				done < /home/raspguard/RaspGuard/raspguard-email-info
 			fi
 		done
 	fi
