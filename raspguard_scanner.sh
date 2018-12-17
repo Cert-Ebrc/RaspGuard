@@ -45,7 +45,7 @@ do
 				#Add information for  db update and the status of the service
                                 echo -e "-----SCAN-DEFINITIONS-----" >> /home/raspguard/cleanlog
                                 systemctl status clamav-freshclam.service >> /home/raspguard/cleanlog
-				#Send to all the maisl in raspguard-email-info
+				#Send to all the mails in raspguard-email-info
 				while read Email; do
 					swaks --to $Email --from "Raspguard@cert.lu" --server $EmailGateway --header "Subject:Provider: $companyname" --body /home/raspguard/cleanlog
 				done < /home/raspguard/RaspGuard/raspguard-email-info
