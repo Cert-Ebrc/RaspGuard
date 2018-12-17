@@ -26,7 +26,7 @@ do
 					echo $scanneranme >> /home/raspguard/infectedlog
                                         echo -e "\n" >> /home/raspguard/infectedlog
 					grep "FOUND" /home/raspguard/log >> /home/raspguard/infectedlog
-					#Send to all the mails in the raspguard-email-alert file
+					#Send to all the infected mails in the raspguard-email-alert file
 					while read  EmailAlert; do
 						swaks --to $EmailAlert --from "Raspguard@cert.lu" --server $EmailGateway --header "Subject: Please create a security incident" --body /home/raspguard/infectedlog
 					done < /home/raspguard/RaspGuard/raspguard-email-alert
